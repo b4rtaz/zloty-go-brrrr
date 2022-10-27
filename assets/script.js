@@ -19,6 +19,23 @@ function render(labels, datasets) {
         chart.destroy();
     }
     const context = document.getElementById('chart').getContext('2d');
+    const scales = {
+        y0: {
+            type: 'linear',
+            display: true,
+            position: 'left',
+          },
+    };
+    if (datasets.length > 1) {
+        scales['y1'] = {
+            type: 'linear',
+            display: true,
+            position: 'right',
+            grid: {
+                drawOnChartArea: false,
+            },
+        };
+    }
     chart = new Chart(context, {
         type: 'line',
         data: {
@@ -28,21 +45,7 @@ function render(labels, datasets) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            scales: {
-                y0: {
-                  type: 'linear',
-                  display: true,
-                  position: 'left',
-                },
-                y1: {
-                  type: 'linear',
-                  display: true,
-                  position: 'right',
-                  grid: {
-                    drawOnChartArea: false, // only want the grid lines for one axis to show up
-                  },
-                },
-            }
+            scales,
         }
     });   
 }

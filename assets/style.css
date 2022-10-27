@@ -12,6 +12,7 @@ html, body {width: 100vw; height: 100vh; margin: 0; padding: 0; overflow: hidden
 #header .selector {padding: 0 10px 10px; display: flex; flex-direction: row;}
 #header .selector .choice {flex: 3; margin: 0 5px;}
 #header .selector .choice.mode {flex: 1;}
+#header .selector .choice.mode select {font-size: 22px; padding-top: 2px; padding-bottom: 2px; text-align: center;}
 #header .selector .choice select {width: 100%; height: 100%; border: 0; padding: 10px; background: #FFF; border-radius: 5px;}
 
 #chart-box {flex: 1; padding: 15px;}
