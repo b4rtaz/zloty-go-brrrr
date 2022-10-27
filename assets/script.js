@@ -2,11 +2,11 @@
 const colors = ['#C81B50', '#2f1bc8', '#1ec81b'];
 let chart = null;
 
-function fillSelect(setSelect, sets, selectedIndex) {
+function fillSelect(setSelect, sets, icon, selectedIndex) {
     for (let setIndex = 0; setIndex < sets.length; setIndex++) {
         const option = document.createElement('option');
         option.value = setIndex;
-        option.innerText = sets[setIndex].title['pl'];
+        option.innerText = icon + ' ' + sets[setIndex].title['pl'];
         if (setIndex === selectedIndex) {
             option.setAttribute('selected', '');
         }
@@ -24,9 +24,9 @@ function render(labels, datasets) {
             type: 'linear',
             display: true,
             position: 'left',
-          },
+        },
     };
-    if (datasets.length > 1) {
+    if (datasets.length > 1 && datasets[1].yAxisID !== 'y0') {
         scales['y1'] = {
             type: 'linear',
             display: true,
@@ -60,13 +60,15 @@ function readMinMax(sets) {
 function renderCompare(sets) {
     const { minYear, maxYear } = readMinMax(sets);
     const labels = [];
+    const haveSameUnits = (sets[0].unit === sets[1].unit);
+
     const datasets = sets.map((set, index) => {
         return {
             label: set.title['pl'],
             data: [],
             borderColor: colors[index],
             borderWidth: 4,
-            yAxisID: `y${index}`
+            yAxisID: `y${haveSameUnits ? 0 : index}`
         };
     });
 
@@ -102,7 +104,7 @@ function renderRatio(sets) {
 
     render(labels, [
         {
-            label: '÷',
+            label: 'A ÷ B',
             data,
             borderColor: '#000',
             borderWidth: 4,
@@ -119,8 +121,8 @@ async function main() {
     const modeSelect = document.getElementById('mode');
     const set1Select = document.getElementById('set1');
     const set2Select = document.getElementById('set2');
-    fillSelect(set1Select, sets, 0);
-    fillSelect(set2Select, sets, 1);
+    fillSelect(set1Select, sets, '🅰', 0);
+    fillSelect(set2Select, sets, '🅱', 1);
     modeSelect.addEventListener('change', reload);
     set1Select.addEventListener('change', reload);
     set2Select.addEventListener('change', reload);

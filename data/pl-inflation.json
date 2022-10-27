@@ -3,6 +3,7 @@
     "title": {
         "pl": "Inflacja w Polsce (wzrost w pkt. procentowych do roku poprzedniego)"
     },
+    "unit": "% points",
     "data": [
         { "year": 1993, "value": 35.3 },
         { "year": 1994, "value": 32.2 },

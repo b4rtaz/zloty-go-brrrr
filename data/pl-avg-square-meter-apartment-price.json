@@ -3,6 +3,7 @@
     "title": {
         "pl": "Średnia cena w Q1 za 1 m2 budynku mieszkalnego w Polsce (PLN)"
     },
+    "unit": "PLN",
     "data": [
         { "year": 2022, "value": 5252 },
         { "year": 2021, "value": 4944 },

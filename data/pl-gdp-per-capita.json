@@ -3,6 +3,7 @@
     "title": {
         "pl": "PKB per capita Polski (USD)"
     },
+    "unit": "USD",
     "data": [
         { "year": 2021, "value": 17840.9210506674 },
         { "year": 2020, "value": 15742.4537256368 },

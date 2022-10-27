@@ -3,6 +3,7 @@
     "title": {
         "pl": "Przeciętne wynagrodzenie w Polsce (PLN)"
     },
+    "unit": "PLN",
     "data": [
         { "year": 2021, "value": 5662.53 },
         { "year": 2020, "value": 5167.47 },
