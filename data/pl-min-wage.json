@@ -4,6 +4,7 @@
         "pl": "Minimalne wynagrodzenie w Polsce (PLN)"
     },
     "data": [
+        { "year": 2023, "value": 3600 },
         { "year": 2022, "value": 3010 },
         { "year": 2021, "value": 2800 },
         { "year": 2020, "value": 2600 },
