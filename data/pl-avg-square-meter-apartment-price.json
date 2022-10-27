@@ -1,0 +1,32 @@
+{
+    "source": "https://stat.gov.pl/obszary-tematyczne/przemysl-budownictwo-srodki-trwale/budownictwo/cena-1-m2-powierzchni-uzytkowej-budynku-mieszkalnego-oddanego-do-uzytkowania,8,1.html",
+    "title": {
+        "pl": "Średnia cena w Q1 za 1 m2 budynku mieszkalnego w Polsce (PLN)"
+    },
+    "data": [
+        { "year": 2022, "value": 5252 },
+        { "year": 2021, "value": 4944 },
+        { "year": 2020, "value": 4567 },
+        { "year": 2019, "value": 4388 },
+        { "year": 2018, "value": 4132 },
+        { "year": 2017, "value": 4424 },
+        { "year": 2016, "value": 4177 },
+        { "year": 2015, "value": 3926 },
+        { "year": 2014, "value": 4129 },
+        { "year": 2013, "value": 4019 },
+        { "year": 2012, "value": 4130 },
+        { "year": 2011, "value": 3797 },
+        { "year": 2010, "value": 4372 },
+        { "year": 2009, "value": 3895 },
+        { "year": 2008, "value": 2970 },
+        { "year": 2007, "value": 2683 },
+        { "year": 2006, "value": 2560 },
+        { "year": 2005, "value": 2505 },
+        { "year": 2004, "value": 2412 },
+        { "year": 2003, "value": 2071 },
+        { "year": 2002, "value": 2400 },
+        { "year": 2001, "value": 2350 },
+        { "year": 2000, "value": 2245 },
+        { "year": 1999, "value": 1960 }
+    ]
+}

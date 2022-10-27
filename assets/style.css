@@ -1,0 +1,18 @@
+html, body, select {font: 14px/1em 'Open Sans', Arial, Verdana, Serif;}
+html, body {width: 100vw; height: 100vh; margin: 0; padding: 0; overflow: hidden; background: #EEEEEE;}
+
+#main {position: absolute; left: 0; top: 0; width: 100vw; height: 100vh; display: flex; flex-direction: column;}
+
+#header {background: #2f1bc8;}
+#header .title {padding: 20px 10px; text-align: center; color: #FFF;}
+#header .title h1 {display: inline-block; margin: 0; padding: 0; font-size: 20px; font-weight: bold;}
+#header .title .by {font-size: 11px; margin: 0 10px;}
+#header .title .by a {text-decoration: none; color: #FFF;}
+#header .title .by a:hover {text-decoration: underline;}
+#header .selector {padding: 0 10px 10px; display: flex; flex-direction: row;}
+#header .selector .choice {flex: 3; margin: 0 5px;}
+#header .selector .choice.mode {flex: 1;}
+#header .selector .choice select {width: 100%; height: 100%; border: 0; padding: 10px; background: #FFF; border-radius: 5px;}
+
+#chart-box {flex: 1; padding: 15px;}
+#chart {background: #FFF; box-shadow: 0 0 8px rgba(0, 0, 0, .15);}

@@ -1,0 +1,26 @@
+{
+    "source": "https://www.lotos.pl/145/type,oil_eurodiesel/dla_biznesu/hurtowe_ceny_paliw/archiwum_cen_paliw",
+    "title": {
+        "pl": "Średnia roczna cena 1000 litrów oleju napędowego w Polsce (PLN)"
+    },
+    "data": [
+        { "year": 2005, "value": 2886.6650246305417 },
+        { "year": 2006, "value": 2941.6774193548385 },
+        { "year": 2007, "value": 2882.3713080168777 },
+        { "year": 2008, "value": 3212.5816733067727 },
+        { "year": 2009, "value": 2815.8210116731516 },
+        { "year": 2010, "value": 3304.0526315789475 },
+        { "year": 2011, "value": 3966.84555984556 },
+        { "year": 2012, "value": 4449.877470355731 },
+        { "year": 2013, "value": 4297.597609561753 },
+        { "year": 2014, "value": 4061.97628458498 },
+        { "year": 2015, "value": 3502.3614457831327 },
+        { "year": 2016, "value": 3267 },
+        { "year": 2017, "value": 3493.5180722891564 },
+        { "year": 2018, "value": 3912.1653225806454 },
+        { "year": 2019, "value": 4028.7004048582994 },
+        { "year": 2020, "value": 3411.05859375 },
+        { "year": 2021, "value": 4281.930501930502 },
+        { "year": 2022, "value": 6497.971428571429 }
+    ]
+}

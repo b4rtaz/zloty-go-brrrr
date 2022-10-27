@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<title>🖨 💰 Złoty Go Brrrr 💰 🖨</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link href="./assets/style.css" rel="stylesheet">
+	<script src="./assets/script.js"></script>
+</head>
+<body>
+    <div id="main">
+        <header id="header">
+            <div class="title">
+                <h1>🖨 💰 Złoty Go Brrrr 💰 🖨</h1>
+                <span class="by">by <a href="https://twitter.com/b4rtaz">b4rtaz</a></span>
+            </div>
+            <div class="selector">
+                <div class="choice">
+                    <select id="set1"></select>
+                </div>
+                <div class="choice mode">
+                    <select id="mode">
+                        <option value="compare">&amp;</option>
+                        <option value="ratio">w proporcji do</option>
+                    </select>
+                </div>
+                <div class="choice">
+                    <select id="set2"></select>
+                </div>
+            </div>
+        </header>
+
+        <div id="chart-box">
+            <canvas id="chart"></canvas>
+        </div>
+
+        <footer id="footer">
+            
+        </footer>
+    </div>
+</body>
+</html>

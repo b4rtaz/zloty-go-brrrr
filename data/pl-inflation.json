@@ -1,0 +1,37 @@
+{
+    "source": "https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/",
+    "title": {
+        "pl": "Inflacja w Polsce (wzrost w pkt. procentowych do roku poprzedniego)"
+    },
+    "data": [
+        { "year": 1993, "value": 35.3 },
+        { "year": 1994, "value": 32.2 },
+        { "year": 1995, "value": 27.8 },
+        { "year": 1996, "value": 19.9 },
+        { "year": 1997, "value": 14.9 },
+        { "year": 1998, "value": 11.8 },
+        { "year": 1999, "value": 7.3 },
+        { "year": 2000, "value": 10.1 },
+        { "year": 2001, "value": 5.5 },
+        { "year": 2002, "value": 1.9 },
+        { "year": 2003, "value": 0.8 },
+        { "year": 2004, "value": 3.5 },
+        { "year": 2005, "value": 2.1 },
+        { "year": 2006, "value": 1.0 },
+        { "year": 2007, "value": 2.5 },
+        { "year": 2008, "value": 4.2 },
+        { "year": 2009, "value": 3.5 },
+        { "year": 2010, "value": 2.6 },
+        { "year": 2011, "value": 4.3 },
+        { "year": 2012, "value": 3.7 },
+        { "year": 2013, "value": 0.9 },
+        { "year": 2014, "value": 0.0 },
+        { "year": 2015, "value": -0.9 },
+        { "year": 2016, "value": -0.6 },
+        { "year": 2017, "value": 2.0 },
+        { "year": 2018, "value": 1.6 },
+        { "year": 2019, "value": 2.3 },
+        { "year": 2020, "value": 3.4 },
+        { "year": 2021, "value": 5.1 }    
+    ]
+}
