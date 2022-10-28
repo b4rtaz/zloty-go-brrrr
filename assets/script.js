@@ -100,7 +100,7 @@ function renderCompareMode(selectedSets) {
     render(labels, datasets);
 }
 
-function renderRatioMode(selectedSets) {
+function renderAggregateMode(selectedSets, sign, aggregate) {
     const { minYear, maxYear } = readMinMax(selectedSets);
     const labels = [];
     const data = [];
@@ -110,7 +110,7 @@ function renderRatioMode(selectedSets) {
         const item2 = selectedSets[1].data.find(i => i.year === year);
         labels.push(String(year));
         if (item1 && item2) {
-            data.push((item2.value === 0) ? 0 : (item1.value / item2.value));
+            data.push(aggregate(item1.value, item2.value));
         } else {
             data.push(null);
         }
@@ -118,68 +118,13 @@ function renderRatioMode(selectedSets) {
 
     render(labels, [
         {
-            label: 'A ÷ B',
+            label: `A ${sign} B`,
             data,
             borderColor: '#000',
             borderWidth: 4,
             yAxisID: 'y0'
         }
     ]);
-}
-
-function renderDifferenceMode(selectedSets) {
-	const { minYear, maxYear } = readMinMax(selectedSets);
-	const labels = [];
-	const data = [];
-
-	for (let year = minYear; year <= maxYear; year++) {
-		const item1 = selectedSets[0].data.find(i => i.year === year);
-		const item2 = selectedSets[1].data.find(i => i.year === year);
-		labels.push(String(year));
-		if (item1 && item2) {
-			data.push(item1.value - item2.value);
-		} else {
-			data.push(null);
-		}
-	}
-
-	render(labels, [
-		{
-			label: 'A - B',
-			data,
-			borderColor: '#ff0000',
-			borderWidth: 4,
-			yAxisID: 'y0'
-		}
-	]);
-}
-
-function renderSumMode(selectedSets) {
-	const { minYear, maxYear } = readMinMax(selectedSets);
-	const labels = [];
-	const data = [];
-
-	for (let year = minYear; year <= maxYear; year++) {
-		labels.push(String(year));
-		let sum = 0;
-		for (const set of selectedSets) {
-			const item = set.data.find(i => i.year === year);
-			if (item) {
-				sum += item.value;
-			}
-		}
-		data.push(sum);
-	}
-
-	render(labels, [
-		{
-			label: 'A+B',
-			data,
-			borderColor: '#00ff00',
-			borderWidth: 4,
-			yAxisID: 'y0'
-		}
-	]);
 }
 
 function updateDataSources(selectedSets) {
@@ -234,13 +179,15 @@ async function main() {
                 renderCompareMode(selectedSets);
                 break;
             case 'ratio':
-                renderRatioMode(selectedSets);
+                renderAggregateMode(selectedSets, '+', (a, b) => {
+					return (b === 0) ? 0 : (a / b);
+				});
                 break;
 			case 'difference':
-				renderDifferenceMode(selectedSets);
+				renderAggregateMode(selectedSets, '-', (a, b) => a - b);
 				break;
 			case 'sum':
-				renderSumMode(selectedSets);
+				renderAggregateMode(selectedSets, '+', (a, b) => a + b);
 				break;
         }
         updateHash(set1Id, set2Id, modeSelect.value);
