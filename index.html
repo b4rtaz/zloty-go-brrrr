@@ -3,74 +3,80 @@
 <head>
 	<meta charset="UTF-8">
 	<title>🖨 💰 Złoty Go Brrrr 💰 🖨</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <link href="./assets/style.css?v=3" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+	<link href="./assets/style.css?v=3" rel="stylesheet">
 	<script src="./assets/script.js?v=3"></script>
-    <script>
-        setup([
-            "pl-avg-square-meter-apartment-price.json",
-            "pl-avg-wage.json",
-            "pl-min-wage.json",
-            "pl-avg-euro-diesel.json",
-            "pl-gdp-per-capita.json",
-            "pl-inflation.json",
-            "pl-electricity-price.json"
-        ]);
-    </script>
+	<script>
+		setup([
+			"pl-avg-square-meter-apartment-price.json",
+			"pl-avg-wage.json",
+			"pl-min-wage.json",
+			"pl-avg-euro-diesel.json",
+			"pl-gdp-per-capita.json",
+			"pl-inflation.json",
+			"pl-electricity-price.json"
+		].map(url => `${url}?v=3`));
+	</script>
 </head>
 <body>
-    <div id="main">
-        <header id="header">
-            <div class="title">
-                <h1>🖨 💰 Złoty Go Brrrr 💰 🖨</h1>
-            </div>
-            <div class="selector">
-                <div class="choice">
-                    <select id="set1"></select>
-                </div>
-                <div class="choice mode">
-                    <select id="mode">
-                        <option value="compare">&amp;</option>
-                        <option value="ratio">÷</option>
-                    </select>
-                </div>
-                <div class="choice">
-                    <select id="set2"></select>
-                </div>
-            </div>
-        </header>
+	<div id="main">
+		<header id="header">
+			<div class="title">
+				<h1>🖨 💰 Złoty Go Brrrr 💰 🖨</h1>
+			</div>
+			<div class="selector">
+				<div class="choice">
+					<select id="set1"></select>
+				</div>
+				<div class="choice mode">
+					<select id="mode">
+						<option value="compare">&amp;</option>
+						<option value="ratio">÷</option>
+					</select>
+				</div>
+				<div class="choice">
+					<select id="set2"></select>
+				</div>
+			</div>
+		</header>
 
-        <div id="chart-box">
-            <div class="chart">
-                <canvas id="chart-canvas"></canvas>
-            </div>
-        </div>
+		<div id="chart-box">
+			<div class="chart">
+				<canvas id="chart-canvas"></canvas>
+			</div>
+		</div>
 
-        <footer id="footer">
-            <div class="row data-source">
-                source: <span id="data-sources"></span>
-            </div>
-            <div class="row credits">
-                by <a href="https://twitter.com/b4rtaz">b4rtaz</a> &mdash;
-                <a href="https://github.com/b4rtaz/zloty-go-brrrr">github</a> &mdash;
-                this page uses cookies
-            </div>
-        </footer>
-    </div>
+		<footer id="footer">
+			<div class="row data-source">
+				source: <span id="data-sources"></span>
+			</div>
+			<div class="row credits">
+				by <a href="https://twitter.com/b4rtaz">b4rtaz</a> &mdash;
+				<a href="https://github.com/b4rtaz/zloty-go-brrrr">github</a> &mdash;
+				this page uses cookies
+			</div>
+		</footer>
+	</div>
 
-    <script>
-        if (location.hostname.includes('github.io')) {
-            document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3186391-13"><\/script>');
+	<script>
+		if (location.hostname.includes('github.io')) {
+			document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3186391-13"><\/script>');
 
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'UA-3186391-13');
-        }
-    </script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			function gconfig() {
+				return { page_path: location.pathname + location.hash };
+			}
+			gtag('js', new Date());
+			gtag('config', 'UA-3186391-13', gconfig());
+			window.addEventListener('hashchange', function (event) {
+				gtag('event', 'pageview', gconfig());
+			});
+		}
+	</script>
 </body>
 </html>
