@@ -4,5 +4,6 @@
     "pl-min-wage.json",
     "pl-avg-euro-diesel.json",
     "pl-gdp-per-capita.json",
-    "pl-inflation.json"
+    "pl-inflation.json",
+    "pl-electricity-price.json"
 ]

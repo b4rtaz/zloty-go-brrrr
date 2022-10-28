@@ -1,0 +1,24 @@
+{
+    "source": "https://www.ure.gov.pl/pl/energia-elektryczna/ceny-wskazniki/7852,Srednia-cena-sprzedazy-energii-elektrycznej-na-rynku-konkurencyjnym-roczna-i-kwa.html",
+    "title": {
+        "pl": "Średnia cena energii elektrycznej w Polsce (PLN/MWh)"
+    },
+    "unit": "PLN/MWh",
+    "data": [
+        { "year": 2022, "value": 470.155 },
+        { "year": 2021, "value": 278.08 },
+        { "year": 2020, "value": 252.69 },
+        { "year": 2019, "value": 245.44 },
+        { "year": 2018, "value": 194.30 },
+        { "year": 2017, "value": 163.70 },
+        { "year": 2016, "value": 169.70 },
+        { "year": 2015, "value": 169.99 },
+        { "year": 2014, "value": 163.58 },
+        { "year": 2013, "value": 181.55 },
+        { "year": 2012, "value": 201.36 },
+        { "year": 2011, "value": 198.90 },
+        { "year": 2010, "value": 195.32 },
+        { "year": 2009, "value": 197.21 },
+        { "year": 2008, "value": 155.44 }
+    ]
+}
