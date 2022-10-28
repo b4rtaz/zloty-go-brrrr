@@ -2,11 +2,11 @@
 const colors = ['#C81B50', '#2f1bc8', '#1ec81b'];
 let chart = null;
 
-function fillSelect(setSelect, sets, icon, selectedIndex) {
+function fillSelect(setSelect, sets, letter, selectedIndex) {
     for (let setIndex = 0; setIndex < sets.length; setIndex++) {
         const option = document.createElement('option');
         option.value = setIndex;
-        option.innerText = icon + ' ' + sets[setIndex].title['pl'];
+        option.innerText = `${letter}: ` + sets[setIndex].title['pl'];
         if (setIndex === selectedIndex) {
             option.setAttribute('selected', '');
         }
@@ -121,8 +121,8 @@ async function main() {
     const modeSelect = document.getElementById('mode');
     const set1Select = document.getElementById('set1');
     const set2Select = document.getElementById('set2');
-    fillSelect(set1Select, sets, '🅰', 0);
-    fillSelect(set2Select, sets, '🅱', 1);
+    fillSelect(set1Select, sets, 'A', 0);
+    fillSelect(set2Select, sets, 'B', 1);
     modeSelect.addEventListener('change', reload);
     set1Select.addEventListener('change', reload);
     set2Select.addEventListener('change', reload);
