@@ -6,8 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <link href="./assets/style.css?v=1" rel="stylesheet">
-	<script src="./assets/script.js?v=1"></script>
+    <link href="./assets/style.css?v=3" rel="stylesheet">
+	<script src="./assets/script.js?v=3"></script>
+    <script>
+        setup([
+            "pl-avg-square-meter-apartment-price.json",
+            "pl-avg-wage.json",
+            "pl-min-wage.json",
+            "pl-avg-euro-diesel.json",
+            "pl-gdp-per-capita.json",
+            "pl-inflation.json",
+            "pl-electricity-price.json"
+        ]);
+    </script>
 </head>
 <body>
     <div id="main">
@@ -32,13 +43,20 @@
         </header>
 
         <div id="chart-box">
-            <canvas id="chart"></canvas>
+            <div class="chart">
+                <canvas id="chart-canvas"></canvas>
+            </div>
         </div>
 
         <footer id="footer">
-            by <a href="https://twitter.com/b4rtaz">b4rtaz</a> &mdash;
-            <a href="https://github.com/b4rtaz/zloty-go-brrrr">github</a> &mdash;
-            this page uses cookies
+            <div class="row data-source">
+                source: <span id="data-sources"></span>
+            </div>
+            <div class="row credits">
+                by <a href="https://twitter.com/b4rtaz">b4rtaz</a> &mdash;
+                <a href="https://github.com/b4rtaz/zloty-go-brrrr">github</a> &mdash;
+                this page uses cookies
+            </div>
         </footer>
     </div>
 

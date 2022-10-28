@@ -1,13 +1,15 @@
 
 const colors = ['#C81B50', '#2f1bc8', '#1ec81b'];
+let setsUrls = null;
+let sets = null;
 let chart = null;
 
-function fillSelect(setSelect, sets, letter, selectedIndex) {
-    for (let setIndex = 0; setIndex < sets.length; setIndex++) {
+function fillSelect(setSelect, letter, selectedId) {
+    for (const setId of Object.keys(sets)) {
         const option = document.createElement('option');
-        option.value = setIndex;
-        option.innerText = `${letter}: ` + sets[setIndex].title['pl'];
-        if (setIndex === selectedIndex) {
+        option.value = setId;
+        option.innerText = `${letter}: ` + sets[setId].title['pl'];
+        if (setId === selectedId) {
             option.setAttribute('selected', '');
         }
         setSelect.appendChild(option);
@@ -18,7 +20,7 @@ function render(labels, datasets) {
     if (chart) {
         chart.destroy();
     }
-    const context = document.getElementById('chart').getContext('2d');
+    const context = document.getElementById('chart-canvas').getContext('2d');
     const scales = {
         y0: {
             type: 'linear',
@@ -50,6 +52,18 @@ function render(labels, datasets) {
     });   
 }
 
+function updateHash(set1Id, set2Id, mode) {
+    location.hash = `${set1Id}/${mode}/${set2Id}`;
+}
+
+function readHash() {
+    if (location.hash) {
+        const parts = location.hash.substring(1).split('/');
+        return { set1Id: parts[0], set2Id: parts[2] };
+    }
+    return null;
+}
+
 function readMinMax(sets) {
     const allYears = sets.map(set => set.data.map(item => item.year)).flat();
     const minYear = Math.min(...allYears);
@@ -57,12 +71,12 @@ function readMinMax(sets) {
     return { minYear, maxYear };
 }
 
-function renderCompare(sets) {
-    const { minYear, maxYear } = readMinMax(sets);
+function renderCompareMode(selectedSets) {
+    const { minYear, maxYear } = readMinMax(selectedSets);
     const labels = [];
-    const haveSameUnits = (sets[0].unit === sets[1].unit);
+    const haveSameUnits = (selectedSets[0].unit === selectedSets[1].unit);
 
-    const datasets = sets.map((set, index) => {
+    const datasets = selectedSets.map((set, index) => {
         return {
             label: set.title['pl'],
             data: [],
@@ -75,8 +89,8 @@ function renderCompare(sets) {
     for (let year = minYear; year <= maxYear; year++) {
         labels.push(String(year));
 
-        for (let setIndex = 0; setIndex < sets.length; setIndex++) {
-            const set = sets[setIndex];
+        for (let setIndex = 0; setIndex < selectedSets.length; setIndex++) {
+            const set = selectedSets[setIndex];
             const item = set.data.find(i => i.year === year);
             datasets[setIndex].data.push(item
                 ? item.value
@@ -86,14 +100,14 @@ function renderCompare(sets) {
     render(labels, datasets);
 }
 
-function renderRatio(sets) {
-    const { minYear, maxYear } = readMinMax(sets);
+function renderRatioMode(selectedSets) {
+    const { minYear, maxYear } = readMinMax(selectedSets);
     const labels = [];
     const data = [];
     
     for (let year = minYear; year <= maxYear; year++) {
-        const item1 = sets[0].data.find(i => i.year === year);
-        const item2 = sets[1].data.find(i => i.year === year);
+        const item1 = selectedSets[0].data.find(i => i.year === year);
+        const item2 = selectedSets[1].data.find(i => i.year === year);
         labels.push(String(year));
         if (item1 && item2) {
             data.push((item2.value === 0) ? 0 : (item1.value / item2.value));
@@ -113,39 +127,70 @@ function renderRatio(sets) {
     ]);
 }
 
+function updateDataSources(selectedSets) {
+    const dataSources = document.getElementById('data-sources');
+    dataSources.innerHTML = '';
+
+    for (const set of selectedSets) {
+        if (dataSources.children.length > 0) {
+            dataSources.appendChild(document.createTextNode(', '));
+        }
+        const link = document.createElement('a');
+        link.innerText = new URL(set.source).host;
+        link.setAttribute('href', set.source);
+        link.setAttribute('target', '_blank');
+        dataSources.appendChild(link);
+    }
+}
+
 async function main() {
-    const list = await (await fetch('./data/list.json')).json();
-    const responses = await Promise.all(list.map(item => fetch(`./data/${item}`)));
-    const sets = await Promise.all(responses.map(response => response.json()));
+    const setsIds = setsUrls.map(url => url.replace(/\..*/, ''));
+    const responses = await Promise.all(setsUrls.map(url => fetch(`./data/${url}`)));
+    const setsData = await Promise.all(responses.map(response => response.json()));
+    sets = setsIds.reduce((result, setId, index) => {
+        result[setId] = setsData[index];
+        return result;
+    }, {});
+
+    let hashIds = readHash();
+    if (hashIds && (!setsIds.includes(hashIds.set1Id) || !setsIds.includes(hashIds.set2Id))) {
+        hashIds = null;
+    }
 
     const modeSelect = document.getElementById('mode');
     const set1Select = document.getElementById('set1');
     const set2Select = document.getElementById('set2');
-    fillSelect(set1Select, sets, 'A', 0);
-    fillSelect(set2Select, sets, 'B', 1);
-    modeSelect.addEventListener('change', reload);
-    set1Select.addEventListener('change', reload);
-    set2Select.addEventListener('change', reload);
+    fillSelect(set1Select, 'A', hashIds ? hashIds.set1Id : setsIds[0]);
+    fillSelect(set2Select, 'B', hashIds ? hashIds.set2Id : setsIds[1]);
+    modeSelect.addEventListener('change', open);
+    set1Select.addEventListener('change', open);
+    set2Select.addEventListener('change', open);
 
-    function reload() {
-        const set1Index = parseInt(set1Select.value);
-        const set2Index = parseInt(set2Select.value);
+    function open() {
+        const set1Id = set1Select.value;
+        const set2Id = set2Select.value;
         const selectedSets = [
-            sets[set1Index],
-            sets[set2Index]
+            sets[set1Id],
+            sets[set2Id]
         ];
 
         switch (modeSelect.value) {
             case 'compare':
-                renderCompare(selectedSets);
+                renderCompareMode(selectedSets);
                 break;
             case 'ratio':
-                renderRatio(selectedSets);
+                renderRatioMode(selectedSets);
                 break;
         }
+        updateHash(set1Id, set2Id, modeSelect.value);
+        updateDataSources(selectedSets);
     }
 
-    reload();
+    open();
+}
+
+function setup(urls) {
+    setsUrls = urls;
 }
 
 document.addEventListener('DOMContentLoaded', main);
