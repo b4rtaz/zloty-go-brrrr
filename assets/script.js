@@ -49,7 +49,7 @@ function render(labels, datasets) {
             maintainAspectRatio: false,
             scales,
         }
-    });   
+    });
 }
 
 function updateHash(set1Id, set2Id, mode) {
@@ -104,7 +104,7 @@ function renderRatioMode(selectedSets) {
     const { minYear, maxYear } = readMinMax(selectedSets);
     const labels = [];
     const data = [];
-    
+
     for (let year = minYear; year <= maxYear; year++) {
         const item1 = selectedSets[0].data.find(i => i.year === year);
         const item2 = selectedSets[1].data.find(i => i.year === year);
@@ -125,6 +125,61 @@ function renderRatioMode(selectedSets) {
             yAxisID: 'y0'
         }
     ]);
+}
+
+function renderDifferenceMode(selectedSets) {
+	const { minYear, maxYear } = readMinMax(selectedSets);
+	const labels = [];
+	const data = [];
+
+	for (let year = minYear; year <= maxYear; year++) {
+		const item1 = selectedSets[0].data.find(i => i.year === year);
+		const item2 = selectedSets[1].data.find(i => i.year === year);
+		labels.push(String(year));
+		if (item1 && item2) {
+			data.push(item1.value - item2.value);
+		} else {
+			data.push(null);
+		}
+	}
+
+	render(labels, [
+		{
+			label: 'A - B',
+			data,
+			borderColor: '#ff0000',
+			borderWidth: 4,
+			yAxisID: 'y0'
+		}
+	]);
+}
+
+function renderSumMode(selectedSets) {
+	const { minYear, maxYear } = readMinMax(selectedSets);
+	const labels = [];
+	const data = [];
+
+	for (let year = minYear; year <= maxYear; year++) {
+		labels.push(String(year));
+		let sum = 0;
+		for (const set of selectedSets) {
+			const item = set.data.find(i => i.year === year);
+			if (item) {
+				sum += item.value;
+			}
+		}
+		data.push(sum);
+	}
+
+	render(labels, [
+		{
+			label: 'A+B',
+			data,
+			borderColor: '#00ff00',
+			borderWidth: 4,
+			yAxisID: 'y0'
+		}
+	]);
 }
 
 function updateDataSources(selectedSets) {
@@ -181,6 +236,12 @@ async function main() {
             case 'ratio':
                 renderRatioMode(selectedSets);
                 break;
+			case 'difference':
+				renderDifferenceMode(selectedSets);
+				break;
+			case 'sum':
+				renderSumMode(selectedSets);
+				break;
         }
         updateHash(set1Id, set2Id, modeSelect.value);
         updateDataSources(selectedSets);
