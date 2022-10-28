@@ -179,7 +179,7 @@ async function main() {
                 renderCompareMode(selectedSets);
                 break;
             case 'ratio':
-                renderAggregateMode(selectedSets, '+', (a, b) => {
+                renderAggregateMode(selectedSets, '÷', (a, b) => {
 					return (b === 0) ? 0 : (a / b);
 				});
                 break;
