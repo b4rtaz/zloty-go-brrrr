@@ -5,10 +5,7 @@ html, body {width: 100vw; height: 100vh; margin: 0; padding: 0; overflow: hidden
 
 #header {background: #2f1bc8;}
 #header .title {padding: 20px 10px; text-align: center; color: #FFF;}
-#header .title h1 {display: inline-block; margin: 0; padding: 0; font-size: 20px; font-weight: bold;}
-#header .title .by {font-size: 11px; margin: 0 10px;}
-#header .title .by a {text-decoration: none; color: #FFF;}
-#header .title .by a:hover {text-decoration: underline;}
+#header .title h1 {margin: 0; padding: 0; font-size: 20px; font-weight: bold;}
 #header .selector {padding: 0 10px 10px; display: flex; flex-direction: row;}
 #header .selector .choice {flex: 3; min-width: 60px; margin: 0 5px;}
 #header .selector .choice.mode {flex: 1;}
@@ -17,3 +14,7 @@ html, body {width: 100vw; height: 100vh; margin: 0; padding: 0; overflow: hidden
 
 #chart-box {flex: 1; padding: 15px;}
 #chart {background: #FFF; box-shadow: 0 0 8px rgba(0, 0, 0, .15);}
+
+#footer {padding: 0 10px 15px; font-size: 12px; margin: 0 10px; text-align: center; color: #727272;}
+#footer a {text-decoration: none; color: #727272;}
+#footer a:hover {text-decoration: underline;}

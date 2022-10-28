@@ -14,7 +14,6 @@
         <header id="header">
             <div class="title">
                 <h1>🖨 💰 Złoty Go Brrrr 💰 🖨</h1>
-                <span class="by">by <a href="https://twitter.com/b4rtaz">b4rtaz</a></span>
             </div>
             <div class="selector">
                 <div class="choice">
@@ -37,8 +36,23 @@
         </div>
 
         <footer id="footer">
-            
+            by <a href="https://twitter.com/b4rtaz">b4rtaz</a> &mdash;
+            <a href="https://github.com/b4rtaz/zloty-go-brrrr">github</a> &mdash;
+            this page uses cookies
         </footer>
     </div>
+
+    <script>
+        if (location.hostname.includes('github.io')) {
+            document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3186391-13"><\/script>');
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-3186391-13');
+        }
+    </script>
 </body>
 </html>
