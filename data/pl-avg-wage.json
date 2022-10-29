@@ -1,12 +1,17 @@
 {
     "sources": [
-		"https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/wskazniki/przecietne-wynagrodzenie-w-latach"
+		"https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/wskazniki/przecietne-wynagrodzenie-w-latach",
+		"https://stat.gov.pl/sygnalne/komunikaty-i-obwieszczenia/lista-komunikatow-i-obwieszczen/komunikat-w-sprawie-przecietnego-wynagrodzenia-w-drugim-kwartale-2022-roku,271,37.html"
 	],
     "title": {
         "pl": "Przeciętne wynagrodzenie brutto w PL (PLN)"
     },
+	"comment": {
+		"pl": "Wartość dla 2022 za Q2"
+	},
     "unit": "PLN",
     "data": [
+        { "year": 2022, "value": 6156.25 },
         { "year": 2021, "value": 5662.53 },
         { "year": 2020, "value": 5167.47 },
         { "year": 2019, "value": 4918.17 },
