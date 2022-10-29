@@ -5,6 +5,9 @@
     "title": {
         "pl": "Średnia cena energii elektrycznej w PL (PLN/MWh)"
     },
+	"comment": {
+		"pl": "Wartość dla 2022 za okres Q1 - Q2"
+	},
     "unit": "PLN/MWh",
     "data": [
         { "year": 2022, "value": 470.155 },
