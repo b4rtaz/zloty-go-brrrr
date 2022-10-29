@@ -1,5 +1,11 @@
 {
-    "source": "https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/",
+    "sources": [
+		"https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/",
+		"https://stat.gov.pl/wykres/1.html"
+	],
+	"comment": {
+		"pl": "Wartość dla 2022 za okres sty - wrz"
+	},
     "title": {
         "pl": "Inflacja w PL (wzrost w pkt. procentowych do roku poprzedniego)"
     },
@@ -33,6 +39,7 @@
         { "year": 2018, "value": 1.6 },
         { "year": 2019, "value": 2.3 },
         { "year": 2020, "value": 3.4 },
-        { "year": 2021, "value": 5.1 }    
+        { "year": 2021, "value": 5.1 },
+        { "year": 2022, "value": 13.3 }
     ]
 }

@@ -12,16 +12,17 @@ html, body {width: 100vw; height: 100vh; margin: 0; padding: 0; overflow: hidden
 #header .selector .choice.mode select {font-size: 22px; padding-top: 2px; padding-bottom: 2px; text-align: center;}
 #header .selector .choice select {width: 100%; height: 100%; border: 0; padding: 10px; background: #FFF; border-radius: 5px;}
 
-#chart-box {flex: 1; padding: 15px;}
+#chart-box {flex: 1; padding: 15px; overflow: hidden;}
 #chart-box .chart {background: #FFF; box-shadow: 0 0 10px rgba(0, 0, 0, .15); width: 100%; max-width: 970px; height: 100%; border-radius: 5px; margin: 0 auto;}
 
-#footer {padding: 0 0 5px; font-size: 12px; margin: 0 auto; text-align: center; display: flex; width: 100%; max-width: 1000px; color: #727272;}
+#footer {padding: 0 0 5px; font-size: 12px; line-height: 1.3em; margin: 0 auto; text-align: center; width: 100%; max-width: 1000px; color: #727272;}
 #footer a {text-decoration: none; color: #727272;}
 #footer a:hover {text-decoration: underline;}
-#footer .row {margin: 0 15px 10px;}
+#footer .row {padding: 0 15px 10px;}
 @media (max-width: 799px) {
     #footer {flex-direction: column; text-align: center;}
 }
 @media (min-width: 800px) {
+    #footer {display: flex;}
     #footer .row.credits {flex: 1; text-align: right;}
 }

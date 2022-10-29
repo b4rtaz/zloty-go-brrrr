@@ -64,19 +64,19 @@ function readHash() {
     return null;
 }
 
-function readMinMax(sets) {
-    const allYears = sets.map(set => set.data.map(item => item.year)).flat();
+function readMinMax(set1, set2) {
+    const allYears = [set1, set2].map(set => set.data.map(item => item.year)).flat();
     const minYear = Math.min(...allYears);
     const maxYear = Math.max(...allYears);
     return { minYear, maxYear };
 }
 
-function renderCompareMode(selectedSets) {
-    const { minYear, maxYear } = readMinMax(selectedSets);
+function renderCompareMode(set1, set2) {
+    const { minYear, maxYear } = readMinMax(set1, set2);
     const labels = [];
-    const haveSameUnits = (selectedSets[0].unit === selectedSets[1].unit);
+    const haveSameUnits = (set1.unit === set2.unit);
 
-    const datasets = selectedSets.map((set, index) => {
+    const datasets = [set1, set2].map((set, index) => {
         return {
             label: set.title['pl'],
             data: [],
@@ -89,8 +89,8 @@ function renderCompareMode(selectedSets) {
     for (let year = minYear; year <= maxYear; year++) {
         labels.push(String(year));
 
-        for (let setIndex = 0; setIndex < selectedSets.length; setIndex++) {
-            const set = selectedSets[setIndex];
+        for (let setIndex = 0; setIndex < 2; setIndex++) {
+            const set = (setIndex === 0) ? set1 : set2;
             const item = set.data.find(i => i.year === year);
             datasets[setIndex].data.push(item
                 ? item.value
@@ -100,14 +100,14 @@ function renderCompareMode(selectedSets) {
     render(labels, datasets);
 }
 
-function renderAggregateMode(selectedSets, sign, aggregate) {
-    const { minYear, maxYear } = readMinMax(selectedSets);
+function renderAggregateMode(set1, set2, sign, aggregate) {
+    const { minYear, maxYear } = readMinMax(set1, set2);
     const labels = [];
     const data = [];
 
     for (let year = minYear; year <= maxYear; year++) {
-        const item1 = selectedSets[0].data.find(i => i.year === year);
-        const item2 = selectedSets[1].data.find(i => i.year === year);
+        const item1 = set1.data.find(i => i.year === year);
+        const item2 = set2.data.find(i => i.year === year);
         labels.push(String(year));
         if (item1 && item2) {
             data.push(aggregate(item1.value, item2.value));
@@ -127,20 +127,30 @@ function renderAggregateMode(selectedSets, sign, aggregate) {
     ]);
 }
 
-function updateDataSources(selectedSets) {
+function appendDataSources(parent, letter, set) {
+	parent.appendChild(document.createTextNode(` ${letter}: `));
+
+	for (let sourceIndex = 0; sourceIndex < set.sources.length; sourceIndex++) {
+		if (sourceIndex > 0) {
+			parent.appendChild(document.createTextNode(', '));
+		}
+		const source = set.sources[sourceIndex];
+		const link = document.createElement('a');
+		link.innerText = new URL(source).host;
+		link.setAttribute('href', source);
+		link.setAttribute('target', '_blank');
+		parent.appendChild(link);
+	}
+	if (set.comment) {
+		parent.appendChild(document.createTextNode(` (${set.comment['pl']})`));
+	}
+}
+
+function updateDataSources(set1, set2) {
     const dataSources = document.getElementById('data-sources');
     dataSources.innerHTML = '';
-
-    for (const set of selectedSets) {
-        if (dataSources.children.length > 0) {
-            dataSources.appendChild(document.createTextNode(', '));
-        }
-        const link = document.createElement('a');
-        link.innerText = new URL(set.source).host;
-        link.setAttribute('href', set.source);
-        link.setAttribute('target', '_blank');
-        dataSources.appendChild(link);
-    }
+	appendDataSources(dataSources, 'A', set1);
+	appendDataSources(dataSources, 'B', set2);
 }
 
 async function main() {
@@ -169,29 +179,27 @@ async function main() {
     function open() {
         const set1Id = set1Select.value;
         const set2Id = set2Select.value;
-        const selectedSets = [
-            sets[set1Id],
-            sets[set2Id]
-        ];
+		const set1 = sets[set1Id];
+		const set2 = sets[set2Id];
 
         switch (modeSelect.value) {
             case 'compare':
-                renderCompareMode(selectedSets);
+                renderCompareMode(set1, set2);
                 break;
             case 'ratio':
-                renderAggregateMode(selectedSets, '÷', (a, b) => {
+                renderAggregateMode(set1, set2, '÷', (a, b) => {
 					return (b === 0) ? 0 : (a / b);
 				});
                 break;
 			case 'difference':
-				renderAggregateMode(selectedSets, '-', (a, b) => a - b);
+				renderAggregateMode(set1, set2, '-', (a, b) => a - b);
 				break;
 			case 'sum':
-				renderAggregateMode(selectedSets, '+', (a, b) => a + b);
+				renderAggregateMode(set1, set2, '+', (a, b) => a + b);
 				break;
         }
         updateHash(set1Id, set2Id, modeSelect.value);
-        updateDataSources(selectedSets);
+        updateDataSources(set1, set2);
     }
 
     open();

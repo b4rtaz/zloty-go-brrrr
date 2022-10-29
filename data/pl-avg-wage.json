@@ -1,5 +1,7 @@
 {
-    "source": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/wskazniki/przecietne-wynagrodzenie-w-latach",
+    "sources": [
+		"https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/wskazniki/przecietne-wynagrodzenie-w-latach"
+	],
     "title": {
         "pl": "Przeciętne wynagrodzenie brutto w PL (PLN)"
     },

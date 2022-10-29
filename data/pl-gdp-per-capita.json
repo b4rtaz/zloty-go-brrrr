@@ -1,5 +1,7 @@
 {
-    "source": "https://datacommons.org/place/country/POL?utm_medium=explore&mprop=amount&popt=EconomicActivity&cpv=activitySource%2CGrossDomesticProduction&hl=en#",
+    "sources": [
+		"https://datacommons.org/place/country/POL?utm_medium=explore&mprop=amount&popt=EconomicActivity&cpv=activitySource%2CGrossDomesticProduction&hl=en#"
+	],
     "title": {
         "pl": "PKB per capita PL (USD)"
     },
@@ -36,6 +38,6 @@
         { "year": 1993, "value": 2497.19524116689 },
         { "year": 1992, "value": 2459.02068468253 },
         { "year": 1991, "value": 2235.54108862522 },
-        { "year": 1990, "value": 1731.20953112388 }        
+        { "year": 1990, "value": 1731.20953112388 }
     ]
 }

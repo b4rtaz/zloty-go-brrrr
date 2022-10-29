@@ -1,5 +1,10 @@
 {
-    "source": "https://www.lotos.pl/145/type,oil_eurodiesel/dla_biznesu/hurtowe_ceny_paliw/archiwum_cen_paliw",
+    "sources": [
+		"https://www.lotos.pl/145/type,oil_eurodiesel/dla_biznesu/hurtowe_ceny_paliw/archiwum_cen_paliw"
+	],
+	"comment": {
+		"pl": "Wartość dla 2022 za okres sty - paź"
+	},
     "title": {
         "pl": "Średnia roczna cena 1000 litrów oleju napędowego w PL (PLN)"
     },

@@ -1,5 +1,7 @@
 {
-    "source": "https://stat.gov.pl/obszary-tematyczne/przemysl-budownictwo-srodki-trwale/budownictwo/cena-1-m2-powierzchni-uzytkowej-budynku-mieszkalnego-oddanego-do-uzytkowania,8,1.html",
+    "sources": [
+		"https://stat.gov.pl/obszary-tematyczne/przemysl-budownictwo-srodki-trwale/budownictwo/cena-1-m2-powierzchni-uzytkowej-budynku-mieszkalnego-oddanego-do-uzytkowania,8,1.html"
+	],
     "title": {
         "pl": "Średnia cena za 1 m2 budynku mieszkalnego w PL (PLN)"
     },
