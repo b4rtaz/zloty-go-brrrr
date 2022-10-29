@@ -1,0 +1,34 @@
+{
+    "sources": [
+		"https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/"
+	],
+	"title": {
+		"pl": "Wartość 1000 zł z 2000 r. pomniejszona o inflację (PLN)"
+	},
+    "unit": "1k PLN",
+    "data": [
+		{ "year": 2000, "value": 1000.00 },
+		{ "year": 2001, "value": 908.27 },
+		{ "year": 2002, "value": 860.91 },
+		{ "year": 2003, "value": 844.86 },
+		{ "year": 2004, "value": 838.16 },
+		{ "year": 2005, "value": 809.81 },
+		{ "year": 2006, "value": 793.16 },
+		{ "year": 2007, "value": 785.30 },
+		{ "year": 2008, "value": 766.15 },
+		{ "year": 2009, "value": 735.27 },
+		{ "year": 2010, "value": 710.41 },
+		{ "year": 2011, "value": 692.40 },
+		{ "year": 2012, "value": 663.86 },
+		{ "year": 2013, "value": 640.17 },
+		{ "year": 2014, "value": 634.46 },
+		{ "year": 2015, "value": 634.46 },
+		{ "year": 2016, "value": 640.22 },
+		{ "year": 2017, "value": 644.09 },
+		{ "year": 2018, "value": 631.46 },
+		{ "year": 2019, "value": 621.51 },
+		{ "year": 2020, "value": 607.54 },
+		{ "year": 2021, "value": 587.56 },
+		{ "year": 2022, "value": 559.05 }
+    ]
+}

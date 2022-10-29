@@ -121,6 +121,8 @@ function renderAggregateMode(set1, set2, sign, aggregate) {
 			label: `A ${sign} B`,
 			data,
 			borderColor: '#000',
+			backgroundColor: 'rgba(0, 0, 0, 0.05)',
+			fill: true,
 			borderWidth: 4,
 			yAxisID: 'y0'
 		}
