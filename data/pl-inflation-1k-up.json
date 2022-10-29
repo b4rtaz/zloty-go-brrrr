@@ -3,7 +3,7 @@
 		"https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/"
 	],
 	"title": {
-		"pl": "Równowartość 1000 zł z 2000 r. z uwzględnieniem inflacji (PLN)"
+		"pl": "Wartość 1000 zł z 2000 r. powiększona o inflację (PLN)"
 	},
     "unit": "1k PLN",
     "data": [
