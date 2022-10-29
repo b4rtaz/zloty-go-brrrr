@@ -153,6 +153,16 @@ function updateDataSources(set1, set2) {
 	appendDataSources(dataSources, 'B', set2);
 }
 
+function safeDiv(a, b) {
+	if (a === 0 && b === 0) {
+		return 1;
+	}
+	if (b === 0) {
+		return 0;
+	}
+	return a / b;
+}
+
 async function main() {
     const setsIds = setsUrls.map(url => url.replace(/\..*/, ''));
     const responses = await Promise.all(setsUrls.map(url => fetch(`./data/${url}`)));
@@ -187,9 +197,7 @@ async function main() {
                 renderCompareMode(set1, set2);
                 break;
             case 'ratio':
-                renderAggregateMode(set1, set2, '÷', (a, b) => {
-					return (b === 0) ? 0 : (a / b);
-				});
+                renderAggregateMode(set1, set2, '÷', safeDiv);
                 break;
 			case 'difference':
 				renderAggregateMode(set1, set2, '-', (a, b) => a - b);
