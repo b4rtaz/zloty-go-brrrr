@@ -1,9 +1,6 @@
 const htmlParser = require('node-html-parser');
 const axios = require('axios');
-
-function avgArray(values) {
-    return values.reduce((a, b) => a + b, 0) / values.length;
-}
+const utils = require('./utils');
 
 async function main() {
     const url = 'https://www.lotos.pl/145/type,oil_eurodiesel/dla_biznesu/hurtowe_ceny_paliw/archiwum_cen_paliw';
@@ -33,7 +30,7 @@ async function main() {
     }
 
     Object.keys(data).forEach(year => {
-        const avg = avgArray(data[year]);
+        const avg = utils.avgArray(data[year]);
         console.log(`{ "year": ${year}, "value": ${avg} },`);
     });
 }

@@ -1,9 +1,6 @@
 const htmlParser = require('node-html-parser');
 const axios = require('axios');
-
-function avgArray(values) {
-    return values.reduce((a, b) => a + b, 0) / values.length;
-}
+const utils = require('./utils');
 
 async function main() {
     const url = 'https://stat.gov.pl/obszary-tematyczne/przemysl-budownictwo-srodki-trwale/budownictwo/cena-1-m2-powierzchni-uzytkowej-budynku-mieszkalnego-oddanego-do-uzytkowania,8,1.html';
@@ -28,7 +25,7 @@ async function main() {
 		const values = [q1, q2, q3, q4]
 			.filter(v => !v.includes('&nbsp;'))
 			.map(v => parseInt(v.replace(' ', '')));
-		const avg = avgArray(values);
+		const avg = utils.avgArray(values);
 		// console.log(`items = ${values.join(', ')}`);
 		console.log(`{ "year": ${year}, "value": ${avg} },`);
     }
